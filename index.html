@@ -11,12 +11,44 @@
   <fieldset>
     <legend>New entry </legend>
     <form>
-      <input type="text" placeholder="Enter new entry">
-      <textarea placeholder="Commentary"></textarea>
+      <input name="entryTitle" type="text" placeholder="Enter new entry">
+      <textarea name="entryBody" placeholder="Commentary"></textarea>
       <input type="submit" >
     </form>
-    <input type="text" placeholder="Enter new entry">
   </fieldset>
 
+  <!-- This will expose saved entries-->
+  <ul id="items"></ul>
+
+  <script>
+    // define variables. get dom elements
+    const form = document.querySelector('form');
+    const inputTitle = document.querySelector("[name='entryTitle']");
+    const inputBody = document.querySelector("[name='entryBody']");
+    const items = document.getElementById('items');
+    
+    const itemArray = [];
+
+    // define update array function
+    addItem = (inputTitle, inputBody) =>{
+          itemArray.push({inputTitle, inputBody});
+          console.log(itemArray)
+
+          const newItem = document.createElement('li');
+          newItem.innerHTML = `${inputTitle }: ${inputBody}`;
+
+          items.appendChild(newItem);
+
+        }
+    
+
+    // add event listener for submit
+    form.onsubmit = (event) =>{
+
+          event.preventDefault();
+          //console.log(form, inputTitle, inputBody);
+          addItem(inputTitle.value, inputBody.value)
+        }
+  </script>
 </body>
 </html>
