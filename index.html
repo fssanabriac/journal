@@ -18,7 +18,9 @@
   </fieldset>
 
   <!-- This will expose saved entries-->
-  <ul id="items"></ul>
+  <ul id="items">
+    <li>title <br> body</li>
+  </ul>
 
   <script>
     // define variables. get dom elements
@@ -27,17 +29,22 @@
     const inputBody = document.querySelector("[name='entryBody']");
     const items = document.getElementById('items');
     
-    const itemArray = [];
+    //const itemArray = [];
 
     // define update array function
     addItem = (inputTitle, inputBody) =>{
-          itemArray.push({inputTitle, inputBody});
+          itemArray.push({title: inputTitle, body : inputBody});
           console.log(itemArray)
 
           const newItem = document.createElement('li');
-          newItem.innerHTML = `${inputTitle }: ${inputBody}`;
+          newItem.innerHTML = "<span>" + 
+            `${inputTitle }` + "</span>" + "<br>" + 
+            "<p>" + `${inputBody}` + "</p>"; 
 
           items.appendChild(newItem);
+
+          //localStorage.setItem('items', JSON.stringify(itemArray);
+
 
         }
     
@@ -49,6 +56,18 @@
           //console.log(form, inputTitle, inputBody);
           addItem(inputTitle.value, inputBody.value)
         }
+
+    // lifecycle
+    const existingItems = [{title : "Title 1", body : "body1"}, {title : "title2", body : "body2"}];
+
+    //const existintgItems = JSON.parse(localStorage.getItem('items'));
+
+    const itemArray = existingItems  || [];
+
+    itemArray.forEach(item  => {
+        addItem(item.title, item.body);
+        }
+        );
   </script>
 </body>
 </html>
