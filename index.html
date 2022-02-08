@@ -11,6 +11,11 @@
   <fieldset>
     <legend>New entry </legend>
     <form>
+      <label for="theme">Choose a theme</label>
+      <select name="theme">
+        <option>Theme 1</option>
+        <option>Theme 2</option>
+      </select>
       <input name="entryTitle" type="text" placeholder="Enter new entry">
       <textarea name="entryBody" placeholder="Commentary"></textarea>
       <input type="submit" >
@@ -25,9 +30,12 @@
   <script>
     // define variables. get dom elements
     const form = document.querySelector('form');
+    const theme = document.querySelector("[name='theme']");
     const inputTitle = document.querySelector("[name='entryTitle']");
     const inputBody = document.querySelector("[name='entryBody']");
     const items = document.getElementById('items');
+
+    
 
     // Lifecycle
     const existingItems = JSON.parse(localStorage.getItem('items')) || [];
@@ -37,9 +45,9 @@
     
 
     // define update array function
-    addItem = (inputTitle, inputBody) =>{
+    addItem = (theme, inputTitle, inputBody) =>{
           console.log("Pushing: ", inputTitle, inputBody);
-          itemArray.push({title: inputTitle, body : inputBody});
+          itemArray.push({theme: theme, title: inputTitle, body : inputBody});
           console.log(itemArray)
 
           const newItem = document.createElement('li');
@@ -54,7 +62,7 @@
 
     // Add existing Items to itemArray
     existingItems.forEach(item  => {
-        addItem(item.title, item.body);
+        addItem(item.theme, item.title, item.body);
         }
         );
 
@@ -63,7 +71,7 @@
 
           event.preventDefault();
           //console.log(form, inputTitle, inputBody);
-          addItem(inputTitle.value, inputBody.value)
+          addItem(theme.value, inputTitle.value, inputBody.value)
         }
 
 
