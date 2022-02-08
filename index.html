@@ -5,22 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Journal</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     
-  <fieldset>
-    <legend>New entry </legend>
-    <form>
-      <label for="theme">Choose a theme</label>
-      <select name="theme">
-        <option>Theme 1</option>
-        <option>Theme 2</option>
-      </select>
-      <input name="entryTitle" type="text" placeholder="Enter new entry">
-      <textarea name="entryBody" placeholder="Commentary"></textarea>
-      <input type="submit" >
-    </form>
-  </fieldset>
+  <div id="container">
+    <fieldset>
+      <legend>New entry </legend>
+      <form>
+        <label for="theme">Choose a theme</label>
+        <select name="theme">
+          <option>Theme 1</option>
+          <option>Theme 2</option>
+        </select>
+        <input name="entryTitle" 
+               type="text" 
+               placeholder="Enter new entry">
+        <textarea name="entryBody" 
+                  placeholder="Commentary"></textarea>
+        <input type="submit" >
+      </form>
+    </fieldset>
+  </div>
 
   <!-- This will expose saved entries-->
   <ul id="items">
