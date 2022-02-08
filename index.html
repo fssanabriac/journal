@@ -28,11 +28,17 @@
     const inputTitle = document.querySelector("[name='entryTitle']");
     const inputBody = document.querySelector("[name='entryBody']");
     const items = document.getElementById('items');
+
+    // Lifecycle
+    const existingItems = JSON.parse(localStorage.getItem('items')) || [];
+
+    const itemArray =  [];
+
     
-    //const itemArray = [];
 
     // define update array function
     addItem = (inputTitle, inputBody) =>{
+          console.log("Pushing: ", inputTitle, inputBody);
           itemArray.push({title: inputTitle, body : inputBody});
           console.log(itemArray)
 
@@ -43,11 +49,14 @@
 
           items.appendChild(newItem);
 
-          //localStorage.setItem('items', JSON.stringify(itemArray);
-
-
+          localStorage.setItem('items', JSON.stringify(itemArray));
         }
-    
+
+    // Add existing Items to itemArray
+    existingItems.forEach(item  => {
+        addItem(item.title, item.body);
+        }
+        );
 
     // add event listener for submit
     form.onsubmit = (event) =>{
@@ -57,17 +66,7 @@
           addItem(inputTitle.value, inputBody.value)
         }
 
-    // lifecycle
-    const existingItems = [{title : "Title 1", body : "body1"}, {title : "title2", body : "body2"}];
 
-    //const existintgItems = JSON.parse(localStorage.getItem('items'));
-
-    const itemArray = existingItems  || [];
-
-    itemArray.forEach(item  => {
-        addItem(item.title, item.body);
-        }
-        );
   </script>
 </body>
 </html>
