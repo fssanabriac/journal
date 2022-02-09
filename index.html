@@ -9,6 +9,9 @@
 </head>
 <body>
     
+  <header>
+    <button id="darkModeButton" onClick="changeMode()">Dark</button>
+  </header>
   <div id="container">
     <fieldset>
       <legend>New entry </legend>
@@ -30,9 +33,10 @@
 
   <!-- This will expose saved entries-->
   <ul id="items">
-    <li>title <br> body</li>
+    <li>Title <br> body</li>
   </ul>
 
+  <script src="scripts/darkMode.js"></script>
   <script>
     // define variables. get dom elements
     const form = document.querySelector('form');
