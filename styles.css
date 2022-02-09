@@ -6,15 +6,29 @@ body {
 #container {
     display: flex;
     justify-content:center;
+    width : 80%;
+    margin : auto;
 }
 
+#items {
+    width : 80%;
+    margin : auto;
+    padding: 0;
+    list-style : none;
+    display : flex;
+    justify-content : space-around;
+    flex-wrap :wrap;
+}
 li {
+    width : 30%;
+    margin:1em;
     background-color: grey;
+    border:solid;
 }
 
 fieldset{
     background-color:lightgray;
-    width=80%
+    width : 100%;
 }
 
 legend {
