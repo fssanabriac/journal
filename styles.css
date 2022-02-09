@@ -8,6 +8,10 @@ body {
     justify-content:center;
 }
 
+li {
+    background-color: grey;
+}
+
 fieldset{
     background-color:lightgray;
     width=80%
