@@ -43,6 +43,7 @@
     const themesSelect = document.getElementById('themeSelector');
     const themes = ["ThemeA", "ThemeB", "ThemeC"];
 
+    // Insert <option> on <select>
     themes.forEach((theme) => {
           const newTheme = document.createElement('option');
           newTheme.innerHTML = theme;
@@ -50,31 +51,44 @@
         });
 
     // Lifecycle
-    const existingItems = JSON.parse(localStorage.getItem('items')) || [];
+    const lista = Object.keys(localStorage);
+    const existingItems = []
+
+    lista.forEach( (theme) => {
+          JSON.parse(localStorage.getItem(theme)).forEach( (item) => {
+              existingItems.push(item)
+              })
+        });
+    //const existingItems = JSON.parse(localStorage.getItem('items')) || [];
 
     const itemArray =  [];
 
     
 
     // define update array function
-    addItem = (theme, inputTitle, inputBody) =>{
-          console.log("Pushing: ", theme, inputTitle, inputBody);
-          itemArray.push({title: inputTitle, body : inputBody});
-          console.log(itemArray)
+    addItem = (inputTheme, inputTitle, inputBody) =>{
+          console.log("Pushing: ", inputTheme, inputTitle, inputBody);
+          const itemObject = {themeName : inputTheme, title: inputTitle, body : inputBody};
+          itemArray.push(itemObject);
+          console.log("itemArray: ", itemArray);
 
           const newItem = document.createElement('li');
-          newItem.innerHTML = "<button>" + `${theme}` + "</button>" + 
+          newItem.innerHTML = "<button>" + `${inputTheme}` + "</button>" + 
             "<span>" + `${inputTitle }` + "</span>" + "<br>" + 
             "<p>" + `${inputBody}` + "</p>"; 
 
           items.appendChild(newItem);
 
-          localStorage.setItem(theme, JSON.stringify(itemArray));
+
+          const currentThemeItems = JSON.parse(localStorage.getItem(inputTheme)) || [];
+          currentThemeItems.push(itemObject);
+          localStorage.setItem(inputTheme, JSON.stringify(currentThemeItems));
+          //localStorage.setItem(inputTheme, JSON.stringify(itemArray));
         }
 
     // Add existing Items to itemArray
     existingItems.forEach(item  => {
-        addItem(item.theme, item.title, item.body);
+        addItem(item.themeName, item.title, item.body);
         }
         );
 
