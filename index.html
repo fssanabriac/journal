@@ -14,9 +14,7 @@
       <legend>New entry </legend>
       <form>
         <label for="theme">Choose a theme</label>
-        <select name="theme">
-          <option>Theme 1</option>
-          <option>Theme 2</option>
+        <select id="themeSelector" name="theme">
         </select>
         <input name="entryTitle" 
                type="text" 
@@ -41,7 +39,15 @@
     const inputBody = document.querySelector("[name='entryBody']");
     const items = document.getElementById('items');
 
-    
+
+    const themesSelect = document.getElementById('themeSelector');
+    const themes = ["ThemeA", "ThemeB", "ThemeC"];
+
+    themes.forEach((theme) => {
+          const newTheme = document.createElement('option');
+          newTheme.innerHTML = theme;
+          themesSelect.appendChild(newTheme);
+        });
 
     // Lifecycle
     const existingItems = JSON.parse(localStorage.getItem('items')) || [];
@@ -52,8 +58,8 @@
 
     // define update array function
     addItem = (theme, inputTitle, inputBody) =>{
-          console.log("Pushing: ", inputTitle, inputBody);
-          itemArray.push({theme: theme, title: inputTitle, body : inputBody});
+          console.log("Pushing: ", theme, inputTitle, inputBody);
+          itemArray.push({title: inputTitle, body : inputBody});
           console.log(itemArray)
 
           const newItem = document.createElement('li');
@@ -63,7 +69,7 @@
 
           items.appendChild(newItem);
 
-          localStorage.setItem('items', JSON.stringify(itemArray));
+          localStorage.setItem(theme, JSON.stringify(itemArray));
         }
 
     // Add existing Items to itemArray
