@@ -6,7 +6,7 @@ body {
 #container {
     display: flex;
     justify-content:center;
-    width : 80%;
+    width : 60%;
     margin : auto;
 }
 
@@ -16,14 +16,31 @@ body {
     padding: 0;
     list-style : none;
     display : flex;
-    justify-content : space-around;
+    justify-content : space-between;
     flex-wrap :wrap;
 }
 li {
-    width : 30%;
+    width : 25%;
     margin:1em;
-    background-color: grey;
-    border:solid;
+    background-color: lightgrey;
+    border-radius: 1em;
+    box-shadow : 5px 5px 5px grey;
+    box-shadow : 0 5px 5px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.19);
+    padding: 1.5em;
+}
+
+#liHeader {
+    display: flex;
+    justify-content : space-between;
+}
+
+#liHeader > span {
+    font-weight : bold;
+    color : lightblack;
+}
+
+#liHeader > button {
+    padding : 5px;
 }
 
 fieldset{

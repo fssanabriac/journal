@@ -34,8 +34,10 @@ addItem = (inputTheme, inputTitle, inputBody, onLocalStorage) =>{
 
   // Insert new element inside HTML (UI).
   const newItem = document.createElement('li');
-  newItem.innerHTML = "<button>" + `${inputTheme}` + "</button>" + 
-    "<span>" + `${inputTitle }` + "</span>" + "<br>" + 
+  newItem.innerHTML = "<div id=\"liHeader\">" + 
+      "<span>" + `${inputTitle }` + "</span>" +  
+      "<button>" + `${inputTheme}` + "</button>" + 
+    "</div>" + "<hr>" + 
     "<p>" + `${inputBody}` + "</p>"; 
 
   items.appendChild(newItem);
