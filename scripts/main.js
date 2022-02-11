@@ -1,4 +1,4 @@
-// define variables. get dom elements
+// Define variables. get dom elements
 const form = document.querySelector('form');
 const theme = document.querySelector("[name='theme']");
 const inputTitle = document.querySelector("[name='entryTitle']");
@@ -16,7 +16,7 @@ themes.forEach((theme) => {
   themesSelect.appendChild(newTheme);
 });
 
-// Lifecycle
+// Lifecycle: retrieve existing items from localStorage.
 const lista = Object.keys(localStorage);
 const existingItems = []
 
@@ -25,19 +25,14 @@ lista.forEach( (theme) => {
     existingItems.push(item)
   })
 });
-//const existingItems = JSON.parse(localStorage.getItem('items')) || [];
 
-const itemArray =  [];
+// Define update UI and localStorage function
+addItem = (inputTheme, inputTitle, inputBody, onLocalStorage) =>{
 
-
-
-// define update array function
-addItem = (inputTheme, inputTitle, inputBody) =>{
   console.log("Pushing: ", inputTheme, inputTitle, inputBody);
   const itemObject = {themeName : inputTheme, title: inputTitle, body : inputBody};
-  itemArray.push(itemObject);
-  console.log("itemArray: ", itemArray);
 
+  // Insert new element inside HTML (UI).
   const newItem = document.createElement('li');
   newItem.innerHTML = "<button>" + `${inputTheme}` + "</button>" + 
     "<span>" + `${inputTitle }` + "</span>" + "<br>" + 
@@ -47,23 +42,27 @@ addItem = (inputTheme, inputTitle, inputBody) =>{
 
 
   const currentThemeItems = JSON.parse(localStorage.getItem(inputTheme)) || [];
-  currentThemeItems.push(itemObject);
+
+  if (!onLocalStorage){ currentThemeItems.push(itemObject)};
   localStorage.setItem(inputTheme, JSON.stringify(currentThemeItems));
-  //localStorage.setItem(inputTheme, JSON.stringify(itemArray));
+
+  inputTitle.value = '';
+  inputBody.value = '';
+  inputTheme.value = 'ThemeA';
 }
 
-// Add existing Items to itemArray
+// Add existing Items to UI.
 existingItems.forEach(item  => {
-  addItem(item.themeName, item.title, item.body);
+  addItem(item.themeName, item.title, item.body, true);
 }
 );
 
-// add event listener for submit
+// Add event listener for submit
 form.onsubmit = (event) =>{
 
   event.preventDefault();
   //console.log(form, inputTitle, inputBody);
-  addItem(theme.value, inputTitle.value, inputBody.value)
+  addItem(theme.value, inputTitle.value, inputBody.value, false);
 }
 
 
