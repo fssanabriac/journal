@@ -10,6 +10,59 @@ body {
     margin : auto;
 }
 
+fieldset{
+    background-color:lightgray;
+    width : 100%;
+}
+
+legend {
+    font-size:2em;
+    background-color:white;
+}
+
+form {
+    /*height:8em; */
+    display:flex;
+    flex-direction:column;
+    padding:0.5em;
+    justify-content: space-around;
+    align-items: center;
+}
+
+label {
+    margin: .5em;
+}
+#submit, #textarea, #inputTitle {
+    width: 50%
+}
+
+#inputTitle{
+    padding: .5em;
+}
+
+#selectContainer {
+    width: 50%;
+    display : flex;
+    justify-content : space-between;
+}
+
+#selectContainer > select {
+    width :30%;
+    border: none;
+}
+
+#textarea {
+    height: 4em;
+    margin: 1em;
+    padding: .5em;
+}
+
+#submit {
+    background-color : green;
+    padding: 1em;
+}
+
+/* Items styles */
 #items {
     width : 80%;
     margin : auto;
@@ -32,6 +85,7 @@ li {
 #liHeader {
     display: flex;
     justify-content : space-between;
+    align-items : center;
 }
 
 #liHeader > span {
@@ -40,25 +94,10 @@ li {
 }
 
 #liHeader > button {
-    padding : 5px;
+    padding : 10px;
+    border : none;
+    border-radius: 0.5em;
 }
 
-fieldset{
-    background-color:lightgray;
-    width : 100%;
-}
-
-legend {
-    font-size:2em;
-    background-color:white;
-}
-
-form {
-    font-size:1.5em;
-    height:8em; 
-    display:flex;
-    flex-direction:column;
-    padding:0.5em;
-    justify-content: space-around;
-    align-items: flex-start;
-}
+li > p {
+    font-family: "Lucida Console", monospace;

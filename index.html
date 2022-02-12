@@ -13,15 +13,21 @@
     <fieldset>
       <legend>New entry </legend>
       <form>
-        <label for="theme">Choose a theme</label>
-        <select id="themeSelector" name="theme">
-        </select>
-        <input name="entryTitle" 
+        <div id="selectContainer">
+          <label for="theme">Choose a theme</label>
+          <select id="themeSelector" name="theme">
+          </select>
+        </div>
+        <label for="entryTitle">Entry Title</label>
+        <input id="inputTitle"
+               name="entryTitle" 
                type="text" 
                placeholder="Enter new entry">
-        <textarea name="entryBody" 
+        <label for="entryBody">Entry content</label>
+        <textarea id="textarea"
+                  name="entryBody" 
                   placeholder="Commentary"></textarea>
-        <input type="submit" >
+        <input id="submit" type="submit" >
       </form>
     </fieldset>
   </div>
