@@ -27,3 +27,9 @@ form {
     justify-content: space-around;
     align-items: flex-start;
 }
+
+#darkModeButton {
+  border: none;
+  background-color: white;
+}
+
