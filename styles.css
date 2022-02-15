@@ -1,6 +1,7 @@
 
 body {
-    font-size:100%
+    font-size:100%;
+    margin: 0;
 }
 
 #container {
@@ -28,8 +29,32 @@ form {
     align-items: flex-start;
 }
 
+/* Header styles */
+
+header{
+  display: flex;
+  justify-content: space-between;
+  padding: 0px;
+  margin-top: .2em;
+  margin-left: 1em;
+  margin-right: 1em;
+  border-bottom: solid 1px;
+}
+
+#iconName {
+  /*background-color: lightgray;*/
+  display : flex;
+  align-items: center;
+  font-size : 1.5em;
+  padding: 0.2em;
+  margin: 0;
+}
+
+#iconName > i {
+  padding-right:0.2em;
+}
+
 #darkModeButton {
   border: none;
   background-color: white;
 }
-
